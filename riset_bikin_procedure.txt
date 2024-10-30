@@ -1,0 +1,34 @@
+Membuat stored procedure di Firebird
+Contoh 1: 
+CREATE PROCEDURE GetAllPaslon
+AS
+BEGIN
+    FOR SELECT id_paslon, nama_ketua, nama_wakil, nomor_urut FROM paslon
+    INTO :id_paslon, :nama_ketua, :nama_wakil, :nomor_urut
+    DO
+    BEGIN
+        SUSPEND;  -- Mengirim hasil ke klien
+    END
+END
+
+Contoh 2: Procedure dengan Parameter Input
+
+CREATE PROCEDURE GetPaslonByNomorUrut (
+    nomor INT
+)
+RETURNS (
+    id_paslon INT,
+    nama_ketua VARCHAR(100),
+    nama_wakil VARCHAR(100)
+)
+AS
+BEGIN
+    FOR SELECT id_paslon, nama_ketua, nama_wakil
+    FROM paslon
+    WHERE nomor_urut = :nomor
+    INTO :id_paslon, :nama_ketua, :nama_wakil
+    DO
+    BEGIN
+        SUSPEND;
+    END
+END
