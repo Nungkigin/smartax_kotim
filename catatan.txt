@@ -1,0 +1,8 @@
+tabel yang perlu di sinkkronkan
+--------------------------------
+kalau mau syncron, yg perlu di syncron ke 
+- wajob_pajak/Objek_pajak
+- SPTPD
+- SKPD
+- SSPD  / Bukti Pembayrana
+- STS
